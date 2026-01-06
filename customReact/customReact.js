@@ -10,8 +10,9 @@ const element = {
 function renderElement(domElement, element){
     const newElement = document.createElement(element.type);
     newElement.innerHTML=element.content;
-    newElement.setAttribute('href', element.props.href);
-    newElement.setAttribute('target', element.props.target);
+    for(const prop in element.props){
+        newElement.setAttribute(prop, element.props[prop]);
+    }
     domElement.appendChild(newElement);
 }
 renderElement(domElement, element);
